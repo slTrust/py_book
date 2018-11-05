@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block con %}
+    <a  class="btn btn-default" href="/author/add/">新增</a>
+
+    <table class="table">
+        <tr>
+            <th>序号</th>
+            <th>作者</th>
+            <th>age</th>
+            <th>生日</th>
+            <th>telephone</th>
+            <th>addr</th>
+            <th>操作</th>
+        </tr>
+        {% for author in author_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ author.name }}</td>
+                <td>{{ author.age }}</td>
+                <td>{{ author.authordetail.birthday|date:'Y-m-d' }}</td>
+                <td>{{ author.authordetail.telephone }}</td>
+                <td>{{ author.authordetail.addr }}</td>
+                <td>
+                    <a class="btn btn-primary" href="/author/{{ author.nid }}/edit/">编辑</a>
+                    <a class="btn btn-danger" href="/author/{{ author.nid }}/del/">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block con %}
+    <a  class="btn btn-default" href="/publish/add/">新增</a>
+    <table class="table">
+        <tr>
+            <th>序号</th>
+            <th>出版社</th>
+            <th>city</th>
+            <th>email</th>
+            <th>操作</th>
+        </tr>
+        {% for publish in publish_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ publish.name }}</td>
+                <td>{{ publish.city }}</td>
+                <td>{{ publish.email }}</td>
+                <td>
+                     <a class="btn btn-primary" href="/publish/{{ publish.nid }}/edit/">编辑</a>
+                     <a class="btn btn-danger" href="/publish/{{ publish.nid }}/del/">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
